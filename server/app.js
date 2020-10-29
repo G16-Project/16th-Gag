@@ -1,16 +1,20 @@
-const express = require('express')
-const app = express()
-const route = require('./routes/chuckRoute')
+require('dotenv').config();
+const express = require("express");
+const app = express();
+const PORT = 3000;
+const routes = require("./routes/index");
+const chuckRoute = require('./routes/chuckRoute')
 const dadRoute = require('./routes/dadJokesRoute')
-const port = 3000
-const errorHandler = require('./middlewares/errorHandler')
 
-app.use(express.urlencoded({extended:true}))
-app.use(route)
+const errorHandler = require("./middlewares/errorHandler");
+
+app.use(express.urlencoded({extended: true}));
+app.use(routes);
+app.use(chuckRoute)
 app.use(dadRoute)
-app.use(errorHandler)
+app.use(errorHandler);
 
-app.listen(port, () => {
-    console.log(`i love you ${port}`)
-})
+app.listen(PORT, ()=> {
+    console.log("Application is listening to http://localhost:" + PORT);
+});
 
