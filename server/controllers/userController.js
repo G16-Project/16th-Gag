@@ -45,6 +45,8 @@ class userController {
                 });
             }   
         } catch (error) {
+            console.log(error)
+            console.log("ERRORRR!")
             next(error);
         }
     }

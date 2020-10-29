@@ -5,7 +5,6 @@ const PORT = 3000;
 const routes = require("./routes/index");
 const chuckRoute = require('./routes/chuckRoute')
 const dadRoute = require('./routes/dadJokesRoute')
-
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(express.urlencoded({extended: true}));
