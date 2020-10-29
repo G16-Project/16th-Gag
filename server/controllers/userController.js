@@ -9,6 +9,7 @@ class userController {
                 email: request.body.email,
                 password: request.body.password
             }
+            console.log(payload)
             const user = await User.create(payload);
             console.log("Register Success");
             response.status(201).json ({
