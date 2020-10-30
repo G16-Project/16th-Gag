@@ -73,7 +73,7 @@
     **Content:** `{ error : "Internal Server Error" }`
 
 ----
-    Get random joke. 
+    Get random joke about Chuck Norris. 
 
 * **URL**
 
@@ -95,6 +95,66 @@
     **Content:** 
     ```md
     { "jokes": "Chuck Norris doesn't commit susicide, susicide commits him" }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 500 <br />
+    **Content:** `{ error : "Internal Server Error" }`
+
+----
+    Get random joke about Dad Jokes. 
+
+* **URL**
+
+    /dad-jokes
+
+* **Method:**
+
+    `GET`
+
+*  **Data Body**
+
+   **Required:**
+ 
+   `jokes=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```md
+    { "jokes": "How many tickles does it take to tickle an octopus? Ten-tickles!" }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 500 <br />
+    **Content:** `{ error : "Internal Server Error" }`
+
+----
+    Get random quote. 
+
+* **URL**
+
+    /favQ
+
+* **Method:**
+
+    `GET`
+
+*  **Data Body**
+
+   **Required:**
+ 
+   `body=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```md
+    { "body": "Happiness is like a butterfly: the more you chase it, the more it will elude you, but if you turn your attention to other things, it will come and sit softly on your shoulder." }
     ```
 
 * **Error Response:**
