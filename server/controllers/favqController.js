@@ -2,7 +2,7 @@ const axios = require('axios')
 
 class FavRoute {
     static async show(req,res, next) {
-        const id = Math.ceil(Math.random() * 10)
+        const id = Math.ceil(Math.random() * 30) + 4
         axios({
             method: 'get',
             url: `https://favqs.com/api/quotes/${id}`,

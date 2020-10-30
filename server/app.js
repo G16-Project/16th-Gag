@@ -21,4 +21,3 @@ app.use(errorHandler);
 app.listen(PORT, ()=> {
     console.log("Application is listening to http://localhost:" + PORT);
 });
-

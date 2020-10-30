@@ -10,7 +10,6 @@ $(document).ready(function() {
     $("#login-page").hide()
     $("#register-page").hide()
     randomJokeQuotes()
-    console.log("--itu joke nya--")
   }
   else {
     $("#login-page").show()
@@ -69,7 +68,6 @@ function login(event) {
     $("#login-email").val("")
     $("#login-password").val("")
     randomJokeQuotes()
-    console.log("--itu joke nya--")
   }).fail(err => {
     console.log(err)
   })
@@ -89,11 +87,10 @@ function getChuck() {
   }).done(res => {
     console.log(res)
     $("#randomize").append(`
-  <div class="mt-5">
-  <p class="font-weight-bold">Chuck Norris</p>
-    <p class="text-justify">${res}</p>
-    <button class="form-control" onclick="randomJokeQuotes()">Randomize Joke!</button>
-  </div>
+    <div class="mt-5">
+    <p class="font-weight-bold">Chuck Norris</p>
+      <p class="text-justify">${res}</p>
+    </div>
   `)
   }).fail(err => {
     console.log(err)
@@ -104,7 +101,20 @@ function getFavQs() {
   const token = localStorage.getItem("token")
   $.ajax({
     method: "GET",
-    url: SERVER + "/favQ"
+    url: SERVER + "/favQ",
+    headers: {
+      token: token
+    }
+  }).done(res => {
+    console.log(res)
+    $("#randomize").append(`
+      <div class="mt-5">
+        <p class="font-weight-bold">Quote</p>
+        <p class="text-justify">${res}</p>
+      </div>
+    `)
+  }).fail(err => {
+    console.log(err)
   })
 }
 
@@ -116,12 +126,11 @@ function getDadJokes() {
   }).done(res => {
     console.log(res)
     $("#randomize").append(`
-  <div class="mt-5">
-    <p class="font-weight-bold">Dad Jokes</p>
-    <p class="text-justify">${res}</p>
-    <button class="form-control" onclick="randomJokeQuotes()">Randomize Joke!</button>
-  </div>
-  `)
+      <div class="mt-5">
+        <p class="font-weight-bold">Dad Jokes</p>
+        <p class="text-justify">${res}</p>
+      </div>
+    `)
   }).fail(err => {
     console.log(err)
   })
@@ -140,4 +149,35 @@ function randomJokeQuotes() {
     joke = getDadJokes()
   }
   return joke
+}
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  // console.log('ID: ' + profile.getId());
+  // console.log('Name: ' + profile.getName());
+  // console.log('Image URL: ' + profile.getImageUrl());
+  // console.log('Email: ' + profile.getEmail());
+  var id_token = googleUser.getAuthResponse().id_token;
+  // console.log(id_token)
+
+  $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/googleLogin',
+    data: {
+      id_token
+    }
+  })
+    .done(response => {
+      console.log(response)
+    })
+    .fail(err => {
+      console.log(err)
+    })
+}
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
 }
