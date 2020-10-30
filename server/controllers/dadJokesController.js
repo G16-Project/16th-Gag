@@ -10,7 +10,7 @@ class DadJokesController {
             }
         })
         .then(({data}) => {
-            console.log(data)
+            console.log(data.joke)
             res.status(200).json(data.joke)
         })
         .catch(err => {

@@ -1,12 +1,11 @@
-const { decode } = require("jsonwebtoken");
-const { Model } = require("sequelize/types");
-const { verifyToken } = require("../helpers/jwt");
 const { User } = require("../models");
+const { decode } = require("jsonwebtoken");
+const { verifyToken } = require("../helpers/jwt");
 
 async function authentication(request, response, next) {
     try {
         const { token } = request.headers;
-        if(!token) {
+        if (!token) {
             response.status(401).json({
                 message: "Authentication failed"
             });
@@ -17,7 +16,7 @@ async function authentication(request, response, next) {
                     email: decode.email
                 }
             })
-            if(!uer) {
+            if (!user) {
                 response.status(401).json({
                     message: "Authentication Failed"
                 });
