@@ -1,3 +1,4 @@
+const { User } = require("../models");
 const { decode } = require("jsonwebtoken");
 const { verifyToken } = require("../helpers/jwt");
 
