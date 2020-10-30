@@ -56,6 +56,7 @@ class userController {
 		let { id_token } = request.body
 		const CLIENT_ID = `793049894644-agg11tghfurrmpd3far5fs46loqi997r.apps.googleusercontent.com`
 		const client = new OAuth2Client(CLIENT_ID);
+		verify()
 		async function verify() {
 			try {
 				const ticket = await client.verifyIdToken({
@@ -80,7 +81,6 @@ class userController {
 				next(error)
 			}
 		}
-		verify()
 	}
 }
 

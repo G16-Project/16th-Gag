@@ -1,11 +1,11 @@
 const SERVER = "http://localhost:3000"
 
-$(document).ready(function() {
+$(document).ready(function () {
   const email = $("#login-email").val()
   const password = $("#login-password").val()
   const token = localStorage.getItem("token")
   console.log(token)
-  if(token) {
+  if (token) {
     $("#home-page").show()
     $("#login-page").hide()
     $("#register-page").hide()
@@ -77,6 +77,10 @@ function logout() {
   $("#login-page").show()
   $("#home-page").hide()
   localStorage.removeItem("token")
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
 }
 
 function getChuck() {
@@ -85,6 +89,7 @@ function getChuck() {
     method: "GET",
     url: SERVER + "/random"
   }).done(res => {
+    $("#randomize").empty()
     console.log(res)
     $("#randomize").append(`
     <div class="mt-5">
@@ -106,6 +111,7 @@ function getFavQs() {
       token: token
     }
   }).done(res => {
+    $("#randomize").empty()
     console.log(res)
     $("#randomize").append(`
       <div class="mt-5">
@@ -124,6 +130,7 @@ function getDadJokes() {
     method: "GET",
     url: SERVER + "/dad-jokes"
   }).done(res => {
+    $("#randomize").empty()
     console.log(res)
     $("#randomize").append(`
       <div class="mt-5">
@@ -137,15 +144,15 @@ function getDadJokes() {
 }
 
 function randomJokeQuotes() {
-  let random = Math.ceil(Math.random()*3)
+  let random = Math.ceil(Math.random() * 3)
   let joke
-  if(random === 1) {
+  if (random === 1) {
     joke = getChuck()
   }
-  else if(random === 2) {
+  else if (random === 2) {
     joke = getFavQs()
   }
-  else if(random === 3) {
+  else if (random === 3) {
     joke = getDadJokes()
   }
   return joke
@@ -167,8 +174,15 @@ function onSignIn(googleUser) {
       id_token
     }
   })
-    .done(response => {
-      console.log(response)
+    .done(res => {
+      const token = res.access_token
+      localStorage.setItem("token", token)
+      $("#home-page").show()
+      $("#login-page").hide()
+      $("#register-page").hide()
+      $("#login-email").val("")
+      $("#login-password").val("")
+      randomJokeQuotes()
     })
     .fail(err => {
       console.log(err)

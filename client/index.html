@@ -1,102 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-signin-client_id" content="793049894644-agg11tghfurrmpd3far5fs46loqi997r.apps.googleusercontent.com">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>16th Gags</title>
-</head>
-<body>
 
-  <!-- REGISTER PAGE -->
-  <section id="register-page" class="container">
-    <h1 class="row justify-content-center mt-5">16th Gag Register</h1>
-    <div class="row justify-content-center mt-5">
-      <form onsubmit="register()">
-        <div class="form-group">
-          <label for="reg-email">Email</label>
-          <input type="email" id="reg-email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="reg-password">Password</label>
-          <input type="password" id="reg-password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary form-control" onclick="loginPage()">Register</button><br>
-      </form>
-    </div>
-    <div class="row justify-content-center mt-2">
-      <a href="" onclick="login()">Back to login page</a>
-    </div>
-  </section>
-  <!-- END OF REGISTER PAGE -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id"
+      content="793049894644-agg11tghfurrmpd3far5fs46loqi997r.apps.googleusercontent.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>16th Gags</title>
+  </head>
 
-  <!-- LOGIN PAGE -->
-  <section id="login-page" class="container">
-    <h1 class="row justify-content-center mt-5">16th Gag Login</h1>
-    <div class="row justify-content-center mt-5">
-      <form onsubmit="login(event)">
-        <div class="form-group">
-          <label for="login-email">Email</label>
-          <input type="email" id="login-email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="login-password">Password</label>
-          <input type="password" id="login-password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary form-control">Login</button><br>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <a href="#" onclick="signOut();">Sign out</a>
-      </form>
-    </div>
-    <div class="row justify-content-center mt-2">
-      <a href="#" style="margin: auto;" onclick="registerPage()">Don't have any account yet?</a>
-    </div>
-  </section>
-  <!-- END OF LOGIN PAGE -->
+  <body>
 
-  <!-- HOMEPAGE -->
-  <section id="home-page">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">16th Gags</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- REGISTER PAGE -->
+    <section id="register-page" class="container">
+      <h1 class="row justify-content-center mt-5">16th Gag Register</h1>
+      <div class="row justify-content-center mt-5">
+        <form onsubmit="register()">
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary form-control" onclick="loginPage()">Register</button><br>
+        </form>
       </div>
-      <button class="btn btn-danger my-2 my-sm-0" onclick="logout()">Logout</button>
-    </nav>
-    <div id="randomize" class="container row mx-auto" style="width: 500px; font-size: x-large;"></div>
-    <div class="row justify-content-center text-center mt-4 mx-auto" style="width: 500px;">
-      <div class="col-4">
-        <a class="text-secondary" href="#" onclick="getChuck()">
-          <figure>
-            <img class="mb-2" src="https://assets.chucknorris.host/img/avatar/chuck-norris.png" width="50px" alt="Chuck Norris Icon">
-            <figcaption>Chuck Norris</figcaption>
-          </figure>
-        </a>
+      <div class="row justify-content-center mt-2">
+        <a href="" onclick="login()">Back to login page</a>
       </div>
-      <div class="col-4">
-        <a class="text-secondary" href="#" onclick="getFavQs()">
-          <figure>
-            <img class="mb-2" src="https://favqs.com/assets/q144-46020d9b2acace90020eb8bba5cbd91f49765c9c5f2b37d1500d41673a04e484.png" width="50px" alt="Chuck Norris Icon">
-            <figcaption>FavQs</figcaption>
-          </figure>
-        </a>
-      </div>
-      <div class="col-4">
-        <a class="text-secondary" href="#" onclick="getDadJokes()">
-          <figure>
-            <img class="mb-2" src="https://icanhazdadjoke.com/static/smile.svg" width="50px" alt="Chuck Norris Icon">
-            <figcaption>icanhazdadjoke</figcaption>
-          </figure>
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- END OF HOMEPAGE -->
+    </section>
+    <!-- END OF REGISTER PAGE -->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="index.js"></script>
-</body>
+    <!-- LOGIN PAGE -->
+    <section id="login-page" class="container">
+      <h1 class="row justify-content-center mt-5">16th Gag Login</h1>
+      <div class="row justify-content-center mt-5">
+        <form onsubmit="login(event)">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary form-control">Login</button><br>
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </form>
+      </div>
+      <div class="row justify-content-center mt-2">
+        <a href="#" style="margin: auto;" onclick="registerPage()">Don't have any account yet?</a>
+      </div>
+    </section>
+    <!-- END OF LOGIN PAGE -->
+
+    <!-- HOMEPAGE -->
+    <section id="home-page">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">16th Gags</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+        <button class="btn btn-danger my-2 my-sm-0" onclick="logout()">Logout</button>
+      </nav>
+      <div id="randomize" class="container row mx-auto" style="width: 500px; font-size: x-large;"></div>
+      <div class="row justify-content-center text-center mt-4 mx-auto" style="width: 500px;">
+        <div class="col-4">
+          <a class="text-secondary" href="#" onclick="getChuck()">
+            <figure>
+              <img class="mb-2" src="https://assets.chucknorris.host/img/avatar/chuck-norris.png" width="50px"
+                alt="Chuck Norris Icon">
+              <figcaption>Chuck Norris</figcaption>
+            </figure>
+          </a>
+        </div>
+        <div class="col-4">
+          <a class="text-secondary" href="#" onclick="getFavQs()">
+            <figure>
+              <img class="mb-2"
+                src="https://favqs.com/assets/q144-46020d9b2acace90020eb8bba5cbd91f49765c9c5f2b37d1500d41673a04e484.png"
+                width="50px" alt="Chuck Norris Icon">
+              <figcaption>FavQs</figcaption>
+            </figure>
+          </a>
+        </div>
+        <div class="col-4">
+          <a class="text-secondary" href="#" onclick="getDadJokes()">
+            <figure>
+              <img class="mb-2" src="https://icanhazdadjoke.com/static/smile.svg" width="50px" alt="Chuck Norris Icon">
+              <figcaption>icanhazdadjoke</figcaption>
+            </figure>
+          </a>
+        </div>
+    </section>
+    <!-- END OF HOMEPAGE -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+
 </html>
